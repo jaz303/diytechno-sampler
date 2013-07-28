@@ -21,6 +21,8 @@ UART (MIDI)     :  2
 
 Total           : 62
 
+Going to try the ATxmega128A1U. Possibly overkill, but I've got an XMEGA dev board lying about plus I'm somewhat familiar with the toolchain.
+
 Crystal oscillator circuits
 ---------------------------
 
@@ -53,3 +55,26 @@ AND, NAND gates
 
 AD7945BNZ - 12-bit DAC
 http://uk.farnell.com/analog-devices/ad7945bnz/ic-12bit-dac-7945-dip20/dp/1079425
+
+Plan of attack
+==============
+
+Circuits to prototype
+---------------------
+
+[ ] 2MHz oscillator circuit
+[ ] Hook the above up to 4 bit counter and 3/8 decoder, check they cycle
+[ ] 555 timer circuit with variable speed (roughly 4kHz - 80kHz)
+[ ] Trigger circuit with D flip flops, test with Arduino for debouncing
+[ ] DAC - drive it from a microcontroller, emulating circuit design
+[ ] Playback circuit - 555 + trigger + counter + DAC + reset + write enable
+[ ] Analog filter
+[ ] ADSR envelope
+[ ] 8-channel mixer
+[ ] Master volume control
+
+Motherboard
+-----------
+Micro, RAM, mixer, amp, USB?, SD card, MIDI, 8 channel expansion ports, trigger inputs
+
+Any extra LCD/buttons for user interface will be done via I2C + auxiliary micro
