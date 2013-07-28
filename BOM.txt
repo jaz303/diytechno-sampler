@@ -1,0 +1,55 @@
+Memory layout
+-------------
+
+21 bit address bus, 16 bit data bus striped across 2x8 bit chips
+
+20:19   Bank select
+18:16   Channel select
+15:00   Sample select
+
+Pin requirements on micro
+-------------------------
+
+Address bus     : 21
+Data bus        : 16
+Trigger inputs  :  8
+Trigger outputs :  8
+I2C (optional)  :  2
+SPI (SD card)   :  4
+Write enable    :  1
+UART (MIDI)     :  2
+
+Total           : 62
+
+Crystal oscillator circuits
+---------------------------
+
+I don't really understand any of these but I'll give them a go:
+
+http://www.z80.info/uexosc.htm
+
+BOM
+---
+
+RAM
+http://uk.farnell.com/lyontek/ly62w20488ml-55lli/sram-16m-2mx8-2-7-5-5v-44tsopii/dp/2253669
+http://www.farnell.com/datasheets/1674437.pdf
+2no.
+
+Crystals
+ - ordered a selection of 2MHz, 4MHz and 8MHz through-hole
+ 
+74LS00 - quad 2-input NAND gates
+74LS04 - hex inverter
+120pF caps
+330ohm resistor
+
+SN74F163AN - 4 bit synchronous binary counter (for striping)
+M74HC590B1R - 8 bit counter (for memory addressing)
+CD74HC237E - 3/8 decoder
+CD40175BE - Quad D flip flop with clear
+
+AND, NAND gates
+
+AD7945BNZ - 12-bit DAC
+http://uk.farnell.com/analog-devices/ad7945bnz/ic-12bit-dac-7945-dip20/dp/1079425
